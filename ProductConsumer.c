@@ -1,34 +1,37 @@
 #include <pthread.h>
 #include <string.h>
 
-void producer() {
+void producer()
+{
   int i;
 
-  while(1){
+  while (1)
+  {
     i = produce();
     put(i);
   }
 }
 
-void consumer() {
+void consumer()
+{
   int i;
 
-  while(1){
+  while (1)
+  {
     i = get();
     consume(i);
   }
 }
 
-int theProduct;
+int main()
+{
+  pthread_t produce;
+  pthread_t consume;
+  pthread_create(&produce, NULL, producer, NULL);
+  pthread_create(&consume, NULL, consumer, NULL);
 
-int produce(){ return theProduct++; }
+  pthread_join(produce, NULL);
+  pthread_join(consume, NULL);
 
-void consume(int i){ printf("%i", i); }
-
-int main() {
-  
   return 0;
 }
-
-
-
