@@ -45,12 +45,15 @@ void *consumer()
 
 int main()
 {
+  // Create the 2 threads for the 2 tasks.
   pthread_t produceThread;
   pthread_t consumeThread;
 
+  // Thread 1
   pthread_create(&produceThread, NULL, producer, NULL);
   pthread_join(produceThread, NULL);
 
+  // Thread 2
   pthread_create(&consumeThread, NULL, consumer, NULL);
   pthread_join(consumeThread, NULL);
 
