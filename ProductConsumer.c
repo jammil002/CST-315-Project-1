@@ -1,3 +1,8 @@
+// James Miller
+// CST -315
+// Producer and Consumer
+// 01 / 29 / 2022
+
 #include <pthread.h>
 #include <string.h>
 #include <stdio.h>
@@ -21,6 +26,7 @@ int get()
   return buffer[count];
 }
 
+// Loop to add to array
 void *producer()
 {
   int i;
@@ -32,6 +38,7 @@ void *producer()
   }
 }
 
+// Loop to remove from array
 void *consumer()
 {
   int i;
